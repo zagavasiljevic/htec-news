@@ -1,0 +1,21 @@
+{
+  "name": "htec-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile-style": "sass scss/main.scss css/main.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zagavasiljevic/htec-news.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zagavasiljevic/htec-news/issues"
+  },
+  "homepage": "https://github.com/zagavasiljevic/htec-news#readme"
+}
