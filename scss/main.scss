@@ -1,3 +1,148 @@
+//color variables
+$color-green: #4caf50;
+$color-green-leight: #7ea980;
+$color-grey: #333;
+$color-grey-leight: #333;
+
+//font size
+p {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 46px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 34px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+h3 {
+  font-size: 26px;
+  line-height: 32px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+h4 {
+  font-size: 22px;
+  line-height: 24px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  cursor: default;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+button {
+  background-color: $color-green;
+  float: right;
+  border: none;
+  padding: 8px 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: $color-green-leight;
+}
+
 body {
-  background-color: red;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+//Navbar
+.navbar {
+  overflow: hidden;
+  background-color: $color-grey;
+
+  a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 500;
+    border: 1px solid #737373;
+  }
+
+  a:hover {
+    background-color: $color-green-leight;
+    color: white;
+  }
+
+  a.active {
+    background-color: $color-green;
+    color: white;
+  }
+
+  .lang-item {
+    float: right;
+  }
+}
+
+//Container - main content section
+.container {
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  max-width: 80%;
+  margin: auto;
+}
+
+//Top news
+#top_news {
+  display: flex;
+  flex-wrap: wrap;
+
+  .single-news {
+    margin: 20px;
+    width: calc(30% - 21px);
+    padding: 15px;
+    box-shadow: 0px 10px 15px #0000001a;
+
+    img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+  }
+
+  .news-full {
+    width: 100%;
+
+    img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+
+    button {
+      float: left;
+      margin-top: 20px;
+    }
+  }
 }

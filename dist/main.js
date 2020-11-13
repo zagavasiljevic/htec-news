@@ -1,14 +1,15 @@
 (() => {
   let e = "ad73f35f96c244529436254ebe21c34c",
     n = document.getElementById("top_news"),
-    t = new XMLHttpRequest();
-  t.open(
+    t = (gb, document.getElementById("section_title")),
+    l = new XMLHttpRequest();
+  l.open(
     "GET",
-    "https://newsapi.org/v2/top-headlines?pageSize=6&country=gb&apiKey=" + e,
+    "https://newsapi.org/v2/top-headlines?pageSize=9&country=gb&apiKey=" + e,
     !0
   );
   const s = ["us", "gb"],
-    l = [
+    i = [
       { name: "Business", slug: "business" },
       { name: "Entertainment", slug: "entertainment" },
       { name: "General", slug: "general" },
@@ -18,38 +19,46 @@
       { name: "Technology", slug: "technology" },
     ];
   (document.getElementById("categories").onclick = function () {
-    l.forEach(function (t) {
-      let s = t.slug,
-        l = (t.name, new XMLHttpRequest());
-      l.addEventListener("load", () => {
-        if (200 === l.status) {
-          let e = JSON.parse(l.responseText).articles,
-            t = "";
+    let t = "";
+    i.forEach(function (n) {
+      let l = n.slug,
+        s = n.name;
+      t += `\n        <div class="single-category">\n            <h4>${s}</h4>\n            <div id="${l}"></div>\n        </div>`;
+      let i = new XMLHttpRequest();
+      i.addEventListener("load", () => {
+        if (200 === i.status) {
+          let e = JSON.parse(i.responseText).articles,
+            n = "",
+            t = document.getElementById(l);
           e.forEach(function (e) {
-            let n = `\n                        <div class="single-news">\n                            <h4>${e.title}</h4>\n                            <img src="${e.urlToImage}" alt="${e.title}">\n                            <p>${e.description}</p>\n                        </div>`;
-            t += n;
+            let t = `\n                        <div class="single-news">\n                            <h4>${e.title}</h4>\n                            <img src="${e.urlToImage}" alt="${e.title}">\n                            <p>${e.description}</p>\n                        </div>`;
+            n += t;
           }),
-            (n.innerHTML = ""),
-            (n.innerHTML = t);
+            (t.innerHTML = n);
         } else console.log("nema categ");
       }),
-        l.open(
+        i.open(
           "GET",
-          `https://newsapi.org/v2/top-headlines?country=gb&category=${s}&pageSize=5&apiKey=${e}`,
+          `https://newsapi.org/v2/top-headlines?country=gb&category=${l}&pageSize=5&apiKey=${e}`,
           !0
         ),
-        l.send();
-    });
+        i.send();
+    }),
+      n.empty,
+      (n.innerHTML = t);
   }),
     (window.getSingleArticle = (e) => {
-      JSON.parse(localStorage.getItem("articles")).gb.forEach(function (t) {
-        if (t.url === e) {
-          let e = `\n            <div class="single-news">\n                <h4>${t.title}</h4>\n                <img src="${t.urlToImage}" alt="${t.title}">\n                <p>${t.content}</p>\n            </div>\n        `;
-          n.empty, (n.innerHTML = e);
-        } else console.log("Greska");
+      JSON.parse(localStorage.getItem("articles")).gb.forEach(function (l) {
+        if (l.url === e) {
+          let e = `\n            <div class="news-full">\n                <img src="${l.urlToImage}" alt="${l.title}">\n                <p>${l.content}</p>\n\n                <button onclick="window.location.reload();">< Back to list</button>\n            </div>\n        `;
+          n.empty,
+            (t.value = l.title),
+            (t.innerHTML = t.value),
+            (n.innerHTML = e);
+        }
       });
     }),
-    (t.onload = function () {
+    (l.onload = function () {
       if (200 === this.status) {
         let e = JSON.parse(this.responseText).articles;
         ((e) => {
@@ -62,11 +71,11 @@
         })(e);
         let t = "";
         e.forEach(function (e) {
-          let n = `\n                <div class="single-news">\n                    <h4>${e.title}</h4>\n                    <img src="${e.urlToImage}" alt="${e.title}">\n                    <p>${e.description}</p>\n                    <button onclick="getSingleArticle('${e.url}')">more</button>\n                </div>`;
+          let n = `\n                <div class="single-news">\n                    <h4>${e.title}</h4>\n                    <img src="${e.urlToImage}" alt="${e.title}">\n                    <p>${e.description}</p>\n                    <button onclick="getSingleArticle('${e.url}')">More ></button>\n                </div>`;
           t += n;
         }),
           (n.innerHTML = t);
       } else console.log("error");
     }),
-    t.send();
+    l.send();
 })();

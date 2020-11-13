@@ -4,16 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <nav class="navbar">
-      <a href="/" class="nav-item active" id="top">Top News</a>
-      <a href="#" class="nav-item" id="categories">Categories</a>
-      <a href="#" class="nav-item" id="search">Search</a>
-    </nav>
+    <header>
+      <nav class="navbar">
+        <a href="/" class="nav-item active" id="top">Top News</a>
+        <a href="javascript:void(0)" class="nav-item" id="categories"
+          >Categories</a
+        >
+        <a href="javascript:void(0)" class="nav-item" id="search">Search</a>
+        <a href="javascript:void(0)" class="lang-item" id="gb">GB</a>
+        <a href="javascript:void(0)" class="lang-item" id="us">US</a>
+      </nav>
+    </header>
 
     <div class="container">
-      <h2>Top news from <label>GB</label>:</h2>
+      <h2 id="section_title">Top news from <label>GB</label>:</h2>
       <div id="top_news"></div>
     </div>
 
