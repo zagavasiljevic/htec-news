@@ -1,0 +1,9 @@
+@media only screen and (max-width: 767px) {
+  //mobile menu
+  .nav-item {
+    display: none;
+  }
+  .navbar .icon {
+    display: block;
+  }
+}

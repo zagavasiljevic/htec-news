@@ -32,7 +32,6 @@ const storeNews = (news) => {
   });
 
   const storedNewsString = JSON.stringify(storedNews);
-
   localStorage.setItem("articles", storedNewsString);
 };
 
@@ -46,13 +45,12 @@ const getSingleArticle = (url) => {
 
   data.gb.forEach(function (element) {
     if (element.url === url) {
-
       //check if content exsist
-      if(element.title){
-        newsTitle = element.title
+      if (element.title) {
+        newsTitle = element.title;
       }
-      if(element.content){
-        newsContent = element.content
+      if (element.content) {
+        newsContent = element.content;
       }
 
       let singleNews = `
@@ -67,9 +65,14 @@ const getSingleArticle = (url) => {
       title.value = element.title;
       title.innerHTML = title.value;
       newsSection.innerHTML = singleNews;
+    } else {
+      console.log("greska");
     }
   });
 };
+
+// Bind function on global window element
+window.getSingleArticle = getSingleArticle;
 
 // Get news for categories
 
@@ -113,13 +116,12 @@ categoriesItem.onclick = function () {
       let newsDesc = "";
       let categorySection = document.getElementById(slug);
       articles.forEach(function (element) {
-
         //check if content exist
-        if(element.title){
-          newsTitle = element.title
+        if (element.title) {
+          newsTitle = element.title;
         }
-        if(element.description){
-          newsDesc = element.description
+        if (element.description) {
+          newsDesc = element.description;
         }
 
         let news = `
@@ -140,9 +142,6 @@ categoriesItem.onclick = function () {
   addAccordions();
 };
 
-// Bind function on global window element
-window.getSingleArticle = getSingleArticle;
-
 //Get Top news
 async function getTopNews() {
   let response = await fetch(
@@ -155,6 +154,7 @@ async function getTopNews() {
 getTopNews().then((data) => {
   let articles = data.articles;
   let newsHtml = "";
+  storeNews(articles);
   articles.forEach(function (element) {
     let news = `
               <div class="single-news">
